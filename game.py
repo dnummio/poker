@@ -77,9 +77,9 @@ class Game:
         elif action == 'CA':
             return 'Called',minBetAmount
         elif action == 'R':
-            return 'Raised'
+            return 'Raised',raised
         elif action == 'F':
-            return 'Fold'
+            return 'Fold',0
         else:
             quit()
 
