@@ -12,7 +12,20 @@ class Player:
     def getMove(self, minBetAmount, maxBetAmount):
         return 'Fold',0
 
+#------------------------BAD PLAYER------------------------------------
+class noojPlayer(Player):
+    def __init__(self, stack):
+        super().__init__();
+        self.stack = stack
 
+    def getMove(self, minBetAmount, maxBetAmount, BB):
+        if (minBetAmount > 0):
+            return 'Call', minBetAmount
+        else:
+            return 'Check',0
+
+
+#------------------------HUMAN PLAYER------------------------------------
 class humanPlayer(Player):
     
     #calls constructor of parent class
