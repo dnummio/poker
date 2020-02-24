@@ -1,6 +1,12 @@
 class Player:
-    def __init__(self, stack):
-        self.stack = stack;
+    def __init__(self, name, stack, position, cards, bet):
+        self.name = name
+        self.stack = stack
+        self.cards = cards
+        self.position = position
+        self.bet = bet
+
+
 
 
 
