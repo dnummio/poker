@@ -4,7 +4,7 @@ import deck
 
 class Game:
     def __init__(self, numPlayers, smallBlind, bigBlind, buyIns):
-        
+
         self.players = []
         self.numberPlayers = numPlayers
         self.SB = smallBlind
@@ -19,7 +19,7 @@ class Game:
         self.playerTurn = (self.SBpos+2)%2;
         
         for amount in buyIns:
-            currPlayer = player.Player(amount);
+            currPlayer = player.humanPlayer(amount);
             self.players.append(currPlayer);
 
 
@@ -30,63 +30,15 @@ class Game:
             hand = self.deck(2);
             player.getCards(hand);
 
-        actionOver = false;
-        while not actionOver:
-            getUserInput();
+        playersLeft = numPlayers;
+        while (playersLeft > 0):
+            Action, amount = getUserInput();
 
-
-
-    def getUserInput(self, minBetAmount, maxBetAmount):
-
-        action = ''
-        actionList = ['CA','CH','R','F','E']
-        raised = 0;
-        
-        #if previous action was a raise
-        if (minBetAmount > 0):
-            actionList.remove('CH')
-
-
-        #continuous prompt input from user
-        while True:
-            try:
-                action = str.upper(input("Player" + str(self.playerTurn) + " (Ch)eck (Ca)ll  (R)aise  (F)old or (E)xit game? "))
-            except ValueError:
-                print("Oops! That was no valid action. Accepted", actionList, ". Try again...")
-            else:
-                if action in actionList:
-                    
-                    #if raise
-                    if action == 'R':
-                        while True:
-                            try:
-                                raised = int(input("Raise Amount: "))
-                            except ValueError:
-                                print("Oops! That was no valid action. Try again....")
-                            else:
-                                if (raised > self.BB):
-                                    break;
-                                else:
-                                    print("Oops! That was no valid action. Try again....")
-                    break
-                else:
-                    print("Oops! That was no valid action. Accepted", actionList, ".Try again...")
-
-        if action == 'CH':
-            return 'Checked',0
-        elif action == 'CA':
-            return 'Called',minBetAmount
-        elif action == 'R':
-            return 'Raised',raised
-        elif action == 'F':
-            return 'Fold',0
-        else:
-            quit()
-
+            playersLeft = playersLeft - 1;
 
 
 def main():
     game = Game(1,1,2,[100])
-    game.getUserInput(10,100)
+    game.players[0].getMove(10,100,game.BB);
 
 main()
