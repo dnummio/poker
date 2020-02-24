@@ -3,6 +3,8 @@ import card
 class Player:
     def __init__(self, stack):
         self.stack = stack;
+        
+
 
     self.cards = [];
     

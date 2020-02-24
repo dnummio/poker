@@ -62,4 +62,3 @@ class Game:
             return 'Fold'
         else:
             quit()
-    
