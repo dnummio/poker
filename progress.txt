@@ -1,8 +1,10 @@
 TODO:
 fix the code for getMove to account for all-ins
-
+kicker functionality
 
 
 2/24/2020 11am pst: Completed deck.py, player.py, and card.py
 
 	  2pm pst: added humanPlayer subclass. reorg game.py 
+
+	  10pm pst: added bestHand.py to rank hands. need to add kicker functionality
