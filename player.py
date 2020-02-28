@@ -1,22 +1,35 @@
 import card
 
 class Player:
-    def __init__(self):
+    def __init__(self,stack,number):
+        self.number = number;
+        self.stack = stack;
         self.cards = [];
+
+    def getNumber(self):
+        return self.number
     
     def getCards(self, cardsDealt):
         for card in range(0, len(cardsDealt)):
             self.cards.append(card);
 
+    def returnCards(self):
+        return self.cards
+
+    def takeFromStack(self,chips):
+        self.stack = self.stack - chips;
+    
+    def getStack(self):
+        return self.stack
+
     #default is fold
-    def getMove(self, minBetAmount, maxBetAmount):
+    def getMove(self, minBetAmount, maxBetAmount, BB):
         return 'Fold',0
 
 #------------------------BAD PLAYER------------------------------------
 class noojPlayer(Player):
-    def __init__(self, stack):
-        super().__init__();
-        self.stack = stack
+    def __init__(self, stack,number):
+        super().__init__(stack,number);
 
     def getMove(self, minBetAmount, maxBetAmount, BB):
         if (minBetAmount > 0):
@@ -29,9 +42,9 @@ class noojPlayer(Player):
 class humanPlayer(Player):
     
     #calls constructor of parent class
-    def __init__(self, stack):
-        super().__init__();
-        self.stack = stack
+    def __init__(self, stack,number):
+        super().__init__(stack,number);
+
 
     #user input for move
     def getMove(self, minBetAmount, maxBetAmount, BB):
@@ -49,7 +62,7 @@ class humanPlayer(Player):
         #continuous prompt input from user                                                                           
         while True:
             try:
-                action = str.upper(input("Player: (Ch)eck (Ca)ll  (R)aise  (F)old or (E)x\
+                action = str.upper(input("Player" +str(self.number)+": (Ch)eck (Ca)ll  (R)aise  (F)old or (E)x\
 it game? "))
             except ValueError:
                 print("Oops! That was no valid action. Accepted", actionList, ". Try again...")
@@ -87,3 +100,4 @@ it game? "))
         else:
             quit()
     
+

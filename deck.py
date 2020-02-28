@@ -40,3 +40,6 @@ class Deck:
 
     def cardsLeft(self):
         return len(self.cards)
+
+    def getInplay(self):
+        return self.inplay;

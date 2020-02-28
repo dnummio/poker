@@ -8,3 +8,6 @@ kicker functionality
 	  2pm pst: added humanPlayer subclass. reorg game.py 
 
 	  10pm pst: added bestHand.py to rank hands. need to add kicker functionality
+
+
+2/28/2020 1pm pst: added round(), bettingRound(), debug may be needed
